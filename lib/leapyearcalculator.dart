@@ -1,17 +1,26 @@
-class LeapYearCalculator {
-  bool isLeapYear(int i) {
-    if (_isDivisibleBy(number:i, divisor:100)) {
-      return false;
+class LeapYearCalculator{
+  String definesAYear(int year){
+    String result ='';
+    if(_isALeapYear(year)){
+      result = '$year is a leap year';
+    }else{
+      result = '$year is not a leap year';
     }
-    else if (_isDivisibleBy(number:i, divisor:4)) {
-      return true;
-    }
-    else {
-      return false;
-    }
+    return result;
   }
-
-  bool _isDivisibleBy({required int number, required int divisor}) {
-    return number % divisor == 0;
+  _isALeapYear(int year){
+    if(year % 4 ==0){
+      if(year % 100 == 0){
+        if(year % 400 ==0){
+          return true;
+        }else{
+          return false;
+        }
+      }else{
+        return true;
+      }
+    }else{
+      return false;
+    }
   }
 }

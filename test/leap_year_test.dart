@@ -1,17 +1,28 @@
-import 'dart:ffi';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leap_year_redo/leapyearcalculator.dart';
-
 void main() {
-  final data = {1973:false,2008:true,4000:false};
-  final year = data.keys;
-  final expected = data.values;
-  for(int i = 0;i<data.length;i++){
-    test(('${year.elementAt(i)} is ${expected.elementAt(i)}'), () {
-      final calc = LeapYearCalculator();
-      final result = calc.isLeapYear(year.elementAt(i));
-      expect(result,expected.elementAt(i));
-    });
-  }
+  test(('This is not a leap year'), (){
+    int year = 1965;
+    final calculator = LeapYearCalculator();
+    final result = calculator.definesAYear(year);
+    expect(result,'$year is not a leap year');
+  });
+  test(('This is a leap year'), (){
+    int year = 2016;
+    final calculator = LeapYearCalculator();
+    final result = calculator.definesAYear(year);
+    expect(result,'$year is a leap year');
+  });
+  test(('This is not a leap year'), (){
+    int year = 100;
+    final calculator = LeapYearCalculator();
+    final result = calculator.definesAYear(year);
+    expect(result,'$year is not a leap year');
+  });
+  test(('This is a leap year'), (){
+    int year = 2000;
+    final calculator = LeapYearCalculator();
+    final result = calculator.definesAYear(year);
+    expect(result,'$year is a leap year');
+  });
 }
